@@ -177,3 +177,82 @@ class ItemCard extends StatelessWidget {
 ```
 
 </details>
+
+<details>
+<summary> <b> Tugas 8 : Elemen Dasar Django </b> </summary>
+
+## **Checklist Tugas**
+
+## **Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?.**
+Kegunaan: const di Flutter digunakan untuk membuat nilai atau widget menjadi konstan. Artinya, nilai tersebut tidak akan berubah sepanjang runtime aplikasi dan akan disimpan di dalam memori secara tetap. const memungkinkan Flutter menghindari pembuatan ulang objek yang sama setiap kali widget dibangun kembali.
+Keuntungan: 
+- Mengurangi penggunaan memori karena objek const hanya diinisialisasi satu kali dan tidak berubah.
+- Meningkatkan efisiensi performa karena Flutter tidak perlu melakukan rebuild pada objek yang sudah bersifat konstan.
+Const sebaiknya digunakan saat membuat widget atau nilai yang tidak perlu diubah sepanjang runtime aplikasi, seperti widget statis (misalnya, teks label atau ikon yang tidak berubah).
+
+## **Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!**
+Column: Column adalah widget yang menata widget-widget anaknya dalam susunan vertikal (atas ke bawah). Contoh penggunaannya adalah untuk menumpuk widget secara vertikal, seperti membuat daftar teks atau gambar dalam satu kolom.
+```
+Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Text('Item 1'),
+    Text('Item 2'),
+    Text('Item 3'),
+  ],
+)
+```
+Row: Row adalah widget yang menata widget-widget anaknya dalam susunan horizontal (kiri ke kanan). Contohnya adalah membuat baris ikon atau tombol secara horizontal.
+```
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceAround,
+  children: [
+    Icon(Icons.home),
+    Icon(Icons.star),
+    Icon(Icons.person),
+  ],
+)
+```
+Perbandingan :
+- Column cocok digunakan saat ingin menampilkan widget secara vertikal, sedangkan Row untuk horizontal.
+- Column dan Row memiliki properti mainAxisAlignment dan crossAxisAlignment untuk mengatur posisi widget anak.
+- Keduanya digunakan dalam tata letak yang berbeda tergantung pada orientasi widget yang diinginkan.
+
+## **Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!**
+Elemen yang digunakan :
+1. TextFormField untuk memasukkan teks, seperti nama produk, harga, deskripsi, rating, dan URL gambar.
+
+Yang tidak digunakan :
+1. Checkbox: Untuk pilihan biner, misalnya untuk menandai pilihan sebagai aktif atau tidak.
+2. Switch: Untuk toggle on/off status tertentu.
+3. Slider: Untuk memilih nilai dalam rentang tertentu.
+4. DropdownButton: Untuk pilihan dari daftar item.
+Alasan Tidak Digunakan: Elemen input seperti Checkbox, Switch, atau DropdownButton tidak digunakan karena tidak sesuai dengan kebutuhan form ini, yang lebih berfokus pada masukan teks dan angka sederhana.
+
+## **Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?**
+Dalam Flutter, tema dapat diatur pada level MaterialApp menggunakan properti theme dan darkTheme. Kita bisa menggunakan ThemeData untuk menentukan warna utama, warna latar belakang, font, dan elemen lain yang membuat tampilan aplikasi konsisten.
+
+Ya, saya menggunakan tema pada aplikasinya. Tema diatur menggunakan properti ThemeData pada widget MaterialApp di main.dart. Dalam ThemeData, color scheme dibuat dari ColorScheme.fromSwatch dengan primarySwatch: Colors.brown. Kemudian, warna primary dan secondary diatur menggunakan warna coklat muda dan coklat sedikit lebih gelap untuk memastikan konsistensi warna di seluruh aplikasi.
+```
+theme: ThemeData(
+  colorScheme: ColorScheme.fromSwatch(
+    primarySwatch: Colors.brown,
+  ).copyWith(
+    primary: Colors.brown[200], // Light brown for primary color
+    secondary: Colors.brown[300], // Slightly darker light brown for secondary color
+  ),
+),
+```
+
+## **Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?**
+Pada kode ini, halaman home diatur sebagai MyHomePage() di dalam MaterialApp. Dalam aplikasi dengan banyak halaman, Navigator akan digunakan untuk mengelola perpindahan halaman. `Navigator.push` atau `Navigator.pushReplacement` biasanya digunakan untuk berpindah dari satu halaman ke halaman lain, seperti dalam kasus ini ketika membuka halaman menu.
+Implementasi Navigasi: Pada halaman MyHomePage atau halaman lain, kita dapat menggunakan Navigator.push atau Navigator.pushReplacement untuk membuka halaman Menu atau halaman lain yang diinginkan. Contoh penggunaan :
+```
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => MenuScreen()),
+);
+```
+
+</details>

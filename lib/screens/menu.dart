@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shopkint/screens/productentry_form.dart';
+import 'package:shopkint/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   final String npm = '2306245472'; // NPM
@@ -24,6 +26,7 @@ class MyHomePage extends StatelessWidget {
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
+      drawer: const LeftDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -120,12 +123,23 @@ class ItemCard extends StatelessWidget {
       color: item.color, // Use the item's color for background
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
+        // Area responsif terhadap sentuhan
         onTap: () {
+          // Memunculkan SnackBar ketika diklik
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(content: Text("Kamu telah menekan tombol ${item.name}!"))
+            ..showSnackBar(SnackBar(
+                content: Text("Kamu telah menekan tombol ${item.name}!")));
+
+          // Navigate ke route yang sesuai (tergantung jenis tombol)
+          if (item.name == "Tambah Product") {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProductEntryFormPage(),
+              ),
             );
+          }
         },
         child: Container(
           padding: const EdgeInsets.all(8),

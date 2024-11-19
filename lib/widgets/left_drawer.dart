@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopkint/screens/list_productentry.dart';
 import 'package:shopkint/screens/menu.dart';
 import 'package:shopkint/screens/productentry_form.dart';
 
@@ -52,9 +53,9 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.mood),
+            leading: const Icon(Icons.production_quantity_limits),
             title: const Text('Tambah Product'),
-            // Bagian redirection ke MoodEntryFormPage
+            // Bagian redirection ke ProductEntryFormPage
             onTap: () {
               Navigator.pushReplacement(
                 context,
@@ -62,6 +63,17 @@ class LeftDrawer extends StatelessWidget {
                   builder: (context) => const ProductEntryFormPage(),
                 ),
               );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add_reaction_rounded),
+            title: const Text('Daftar Product'),
+            onTap: () {
+                // Route menu ke halaman product
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ProductEntryPage()),
+                );
             },
           ),
         ],
